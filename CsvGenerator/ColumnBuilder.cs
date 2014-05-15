@@ -37,11 +37,6 @@ namespace CsvGenerator
             return column;
         }
 
-        protected IList<Column<T>> Columns
-        {
-            get { return _columns; }
-        }
-
         public IEnumerator<Column<T>> GetEnumerator()
         {
             return _columns

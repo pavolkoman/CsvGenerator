@@ -46,32 +46,16 @@ namespace CsvGenerator.Tests
         {
             var p = new Person() { Name = "Jane Testa", Email = "jane@testa.com", Height = 176, Weight = 65, Income = 10000, Phone = "777666777", BirthDate = new DateTime(1984, 10, 16), Note = "Text with \"Quotes\"" };
             var p2 = new Person() { Name = "Chuck Norris", Email = "chuck@norris.com", Height = 178, Weight = 80, Income = 22222, Phone = "777666555", BirthDate = new DateTime(1940, 3, 10), Note = "Text, with, delimiters" };
-            //var p3 = new Person() { Name = "Chuck CrLfTesta", Email = "chuck@testa.com", Height = 186, Weight = 85, Income = 11111, Phone = "777666444", BirthDate = new DateTime(1982, 1, 11), Note = "Text with \r\n newline" };
-            //var p4 = new Person() { Name = "Chuck CrTesta", Email = "chuck@testa.com", Height = 186, Weight = 85, Income = 11111, Phone = "777666444", BirthDate = new DateTime(1982, 1, 11), Note = "Text with \r newline" };
-            //var p5 = new Person() { Name = "Chuck LfTesta", Email = "chuck@testa.com", Height = 186, Weight = 85, Income = 11111, Phone = "777666444", BirthDate = new DateTime(1982, 1, 11), Note = "Text with \n newline" };
 
             listOfPerson.Add(p);
             listOfPerson.Add(p2);
-            //listOfPerson.Add(p3);
-            //listOfPerson.Add(p4);
-            //listOfPerson.Add(p5);
         }
 
-        //string csvContent = listOfPerson.Csv().Columns(column =>
-        //{
-        //    column.For(person => person.Name);
-        //    column.For(person => person.Email);
-        //    column.For(person => person.Phone);
-        //    column.For(person => person.Height);
-        //    column.For(person => person.Weight);
-        //    column.For(person => person.BirthDate);
-        //    column.For(person => person.Note);
-        //}).IncludeEndingLineBreak(false).ToString();
 
         [TestMethod]
         public void RecordsSeparatedByDefaultLineBreakCrLf()
         {
-            string csvContent = listOfPerson.Take(2).Csv().Columns(column =>
+            string csvContent = listOfPerson.Csv().Columns(column =>
             {
                 column.For(person => person.Name);
             }).ToString();
@@ -84,7 +68,7 @@ namespace CsvGenerator.Tests
         [TestMethod]
         public void RecordsSeparatedByDefaultLineBreakCrLfIfSetUnknownLineBreak()
         {
-            string csvContent = listOfPerson.Take(2).Csv().Columns(column =>
+            string csvContent = listOfPerson.Csv().Columns(column =>
             {
                 column.For(person => person.Name);
             }).SetLineBreak((LineBreak)666).ToString();
@@ -97,7 +81,7 @@ namespace CsvGenerator.Tests
         [TestMethod]
         public void RecordsSeparatedByLineBreakCrLf()
         {
-            string csvContent = listOfPerson.Take(2).Csv().Columns(column =>
+            string csvContent = listOfPerson.Csv().Columns(column =>
             {
                 column.For(person => person.Name);
             }).SetLineBreak(LineBreak.CrLf).ToString();
@@ -110,7 +94,7 @@ namespace CsvGenerator.Tests
         [TestMethod]
         public void RecordsSeparatedByLineBreakCr()
         {
-            string csvContent = listOfPerson.Take(2).Csv().Columns(column =>
+            string csvContent = listOfPerson.Csv().Columns(column =>
             {
                 column.For(person => person.Name);
             }).SetLineBreak(LineBreak.Cr).ToString();
@@ -123,7 +107,7 @@ namespace CsvGenerator.Tests
         [TestMethod]
         public void RecordsSeparatedByLineBreakLf()
         {
-            string csvContent = listOfPerson.Take(2).Csv().Columns(column =>
+            string csvContent = listOfPerson.Csv().Columns(column =>
             {
                 column.For(person => person.Name);
             }).SetLineBreak(LineBreak.Lf).ToString();
@@ -136,7 +120,7 @@ namespace CsvGenerator.Tests
         [TestMethod]
         public void LastRecordHasEndingLineBreakByDefault()
         {
-            string csvContent = listOfPerson.Take(2).Csv().Columns(column =>
+            string csvContent = listOfPerson.Csv().Columns(column =>
             {
                 column.For(person => person.Name);
             }).ToString();
@@ -149,7 +133,7 @@ namespace CsvGenerator.Tests
         [TestMethod]
         public void LastRecordHasEndingLineBreak()
         {
-            string csvContent = listOfPerson.Take(2).Csv().Columns(column =>
+            string csvContent = listOfPerson.Csv().Columns(column =>
             {
                 column.For(person => person.Name);
             }).IncludeEndingLineBreak(true).ToString();
@@ -162,7 +146,7 @@ namespace CsvGenerator.Tests
         [TestMethod]
         public void LastRecordCannotHaveEndingLineBreak()
         {
-            string csvContent = listOfPerson.Take(2).Csv().Columns(column =>
+            string csvContent = listOfPerson.Csv().Columns(column =>
             {
                 column.For(person => person.Name);
             }).IncludeEndingLineBreak(false).ToString();
@@ -175,7 +159,7 @@ namespace CsvGenerator.Tests
         [TestMethod]
         public void IncludeHeaderByDefault()
         {
-            string csvContent = listOfPerson.Take(2).Csv().Columns(column =>
+            string csvContent = listOfPerson.Csv().Columns(column =>
             {
                 column.For(person => person.Name);
             }).ToString();
@@ -188,7 +172,7 @@ namespace CsvGenerator.Tests
         [TestMethod]
         public void IncludeHeader()
         {
-            string csvContent = listOfPerson.Take(2).Csv().Columns(column =>
+            string csvContent = listOfPerson.Csv().Columns(column =>
             {
                 column.For(person => person.Name);
             }).IncludeHeader(true).ToString();
@@ -201,7 +185,7 @@ namespace CsvGenerator.Tests
         [TestMethod]
         public void DoesNotIncludeHeader()
         {
-            string csvContent = listOfPerson.Take(2).Csv().Columns(column =>
+            string csvContent = listOfPerson.Csv().Columns(column =>
             {
                 column.For(person => person.Name);
             }).IncludeHeader(false).ToString();
@@ -214,7 +198,7 @@ namespace CsvGenerator.Tests
         [TestMethod]
         public void FieldsDelimiterDefaultComma()
         {
-            string csvContent = listOfPerson.Take(2).Csv().Columns(column =>
+            string csvContent = listOfPerson.Csv().Columns(column =>
             {
                 column.For(person => person.Name);
                 column.For(person => person.Email);
@@ -228,7 +212,7 @@ namespace CsvGenerator.Tests
         [TestMethod]
         public void FieldsDelimiterSemicolon()
         {
-            string csvContent = listOfPerson.Take(2).Csv().Columns(column =>
+            string csvContent = listOfPerson.Csv().Columns(column =>
             {
                 column.For(person => person.Name);
                 column.For(person => person.Email);
@@ -242,7 +226,7 @@ namespace CsvGenerator.Tests
         [TestMethod]
         public void SurroundingQuotesNotUsedByDefault()
         {
-            string csvContent = listOfPerson.Take(2).Csv().Columns(column =>
+            string csvContent = listOfPerson.Csv().Columns(column =>
             {
                 column.For(person => person.Name);
                 column.For(person => person.Email);
@@ -256,7 +240,7 @@ namespace CsvGenerator.Tests
         [TestMethod]
         public void SurroundingQuotesNotUsed()
         {
-            string csvContent = listOfPerson.Take(2).Csv().Columns(column =>
+            string csvContent = listOfPerson.Csv().Columns(column =>
             {
                 column.For(person => person.Name);
                 column.For(person => person.Email);
@@ -270,7 +254,7 @@ namespace CsvGenerator.Tests
         [TestMethod]
         public void SurroundingQuotesUseAllways()
         {
-            string csvContent = listOfPerson.Take(2).Csv().Columns(column =>
+            string csvContent = listOfPerson.Csv().Columns(column =>
             {
                 column.For(person => person.Name);
                 column.For(person => person.Email);
@@ -284,7 +268,7 @@ namespace CsvGenerator.Tests
         [TestMethod]
         public void SurroundingQuotesUseAllwaysSingleQuote()
         {
-            string csvContent = listOfPerson.Take(2).Csv().Columns(column =>
+            string csvContent = listOfPerson.Csv().Columns(column =>
             {
                 column.For(person => person.Name);
                 column.For(person => person.Email);
