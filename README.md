@@ -30,9 +30,11 @@ string csvContent = listOfPerson.Csv().Columns(column =>
 	}).Generate();
 ```
 Output will be 
+```
 Name,Email,BirthDate
 Chuck Testa,chuck@testa.com,22.11.1954
-			
+```
+
 ### CSV options
 
 |Option                     | Description                                                                                        | Example															|
@@ -73,28 +75,29 @@ allowing some flexibility where CSV files deviate from the definition.
 The following shows each rule defined in RFC 4180, and how it is treated by CsvGenerator.
 ### Rule 1
 
+```
 1. Each record is located on a separate line, delimited by a line
    break (CRLF).  For example:
 
    aaa,bbb,ccc CRLF
    zzz,yyy,xxx CRLF
-
+```
 CsvGenerator uses CrLf by default, but the end of line symbols can 
 be specified by the user using SetLineBreak() method.
 
 ### Rule 2
-
+```
 2. The last record in the file may or may not have an ending line
    break.  For example:
 
    aaa,bbb,ccc CRLF
    zzz,yyy,xxx
-
+```
 CsvGenerator will add a line break by default, but this behavior can 
 be disabled by calling method IncludeEndingLineBreak(false).
 
 ### Rule 3
-
+```
 3. There maybe an optional header line appearing as the first line
    of the file with the same format as normal record lines.  This
    header will contain names corresponding to the fields in the file
@@ -106,12 +109,12 @@ be disabled by calling method IncludeEndingLineBreak(false).
    field_name,field_name,field_name CRLF
    aaa,bbb,ccc CRLF
    zzz,yyy,xxx CRLF
-
+```
 CsvGenerator writes header line by default. This can be disabled by 
 calling IncludeHeader(false) method. 
 
 ### Rule 4
-
+```
 4. Within the header and each record, there may be one or more
    fields, separated by commas.  Each line should contain the same
    number of fields throughout the file.  Spaces are considered part
@@ -119,12 +122,12 @@ calling IncludeHeader(false) method.
    record must not be followed by a comma.  For example:
 
    aaa,bbb,ccc
-
+```
 The delimiter in CsvGenerator is configurable by calling SetFieldDelimiter() method.
 Default is comma.
 
 ### Rule 5
-
+```
 5. Each field may or may not be enclosed in double quotes (however
    some programs, such as Microsoft Excel, do not use double quotes
    at all).  If fields are not enclosed with double quotes, then
@@ -132,7 +135,7 @@ Default is comma.
 
    "aaa","bbb","ccc" CRLF
    zzz,yyy,xxx
-
+```
 By default CsvGenerator only encloses fields in double quotes when 
 they require escaping (see Rule 6), but it is possible to enable 
 quotes always by calling UseSurroundingQuotesAlways(true) method.
@@ -140,24 +143,24 @@ quotes always by calling UseSurroundingQuotesAlways(true) method.
 The quote character is configurable by calling SetFieldQuote() method, default is double quote (").
 
 ### Rule 6
-
+```
 6. Fields containing line breaks (CRLF), double quotes, and commas
    should be enclosed in double-quotes.  For example:
 
    "aaa","b CRLF
    bb","ccc" CRLF
    zzz,yyy,xxx
-
+```
 CsvGenerator encloses a field in quotes if it contains a newline, quote character or delimiter character.
 
 ### Rule 7
-
+```
 7. If double-quotes are used to enclose fields, then a double-quote
    appearing inside a field must be escaped by preceding it with
    another double quote.  For example:
 
    "aaa","b""bb","ccc"
-
+```
 CsvGenerator escapes double-quotes with a preceding double-quote. 
 Please note that the sometimes-used convention of 
 escaping double-quotes as \" (instead of "") is **not supported**.
