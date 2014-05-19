@@ -1,5 +1,5 @@
 ## CsvGenerator 
-=================
+
 ### Introduction
 
 The CsvGenerator is simple and easy to use tool for generation CSV data 
@@ -44,8 +44,8 @@ Chuck Testa,chuck@testa.com,22.11.1954
 |IncludeHeader              | Defines if output should contain header - names of columns. Default is True.                       | .Csv().Columns( /* Columns */ ).IncludeHeader(false)             |
 |IncludeEndingLineBreak     | Defines if Line Break is written after last field of last record. Default is True                  | .Csv().Columns( /* Columns */ ).IncludeEndingLineBreak(false)    |
 |SetLineBreak               | Allows change line break chars between CRLF, CR and LF. Default is CRLF.                           | .Csv().Columns( /* Columns */ ).SetLineBreak(LineBreak.Lf)       |
-|SetFieldQuote              | Specifies char (string) that is used as a \"quote character\". Default is double quote (\").       | .Csv().Columns( /* Columns */ ).SetFieldQuote(\"'\")             |
-|SetFieldDelimiter          | Specifies char (string) that is used as delimiter (separator) between fields. Default is comma (,) | .Csv().Columns( /* Columns */ ).SetFieldDelimiter(\";\")         |
+|SetFieldQuote              | Specifies char (string) that is used as a "quote character". Default is double quote (").          | .Csv().Columns( /* Columns */ ).SetFieldQuote("'")               |
+|SetFieldDelimiter          | Specifies char (string) that is used as delimiter (separator) between fields. Default is comma (,) | .Csv().Columns( /* Columns */ ).SetFieldDelimiter(";")           |
 
 ### Column options                                                                                                                                                                                  
 
@@ -54,8 +54,8 @@ additional methods to the end of column.For(...).
 
 Option        | Description                                                                                   | Example															|
 --------------|-----------------------------------------------------------------------------------------------|-----------------------------------------------------------------|
-Named         | Specifies column's name                                                                       | column.For(x => x.Name).Named(\"Customer Name\") 				|
-Format        | A custom format to use when building the cell's value                                         | column.For(p => p.BirthDate).Format(\"{0:dd.MM.yyyy}\");		|
+Named         | Specifies column's name                                                                       | column.For(x => x.Name).Named("Customer Name")   				|
+Format        | A custom format to use when building the cell's value                                         | column.For(p => p.BirthDate).Format("{0:dd.MM.yyyy}");		|
 CellCondition | Delegate used to hide the contents of the cells in a column which does not fulfill condition. | column.For(p => p.Income).CellCondition(p=> p.Income < 100000); |
 
 ## Details
