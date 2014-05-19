@@ -166,5 +166,4 @@ Please note that the sometimes-used convention of
 escaping double-quotes as \" (instead of "") is **not supported**.
 
 ### Support or Contact
-Having trouble with CsvGenerator? 
-Check out the documentation at http://pavolkoman.github.io/CsvGenerator or contact pavol@koman.sk.
+CsvGenerator is not working correctly? Contact me at pavol@koman.sk .
