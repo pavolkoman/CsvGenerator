@@ -166,8 +166,8 @@ Please note that the sometimes-used convention of
 escaping double-quotes as \" (instead of "") is **not supported**.
 
 ### Credits
-Creation of CsvGenerator was inspired by: 
-Super CSV (http://supercsv.sourceforge.net/)
+Creation of CsvGenerator was inspired by:  
+Super CSV (http://supercsv.sourceforge.net/)  
 MvcContrib.Grid (http://mvccontrib.codeplex.com/wikipage?title=Grid)
 
 ### Support or Contact
